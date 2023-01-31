@@ -1,0 +1,9 @@
+---
+# Variables for config
+
+source_folder: "~/honeybee"
+dest_folder: "/var/www/html/honeybee"
+git_repo: "https://github.com/cerfontaine/Honeybee.git"
+key_file: "/home/user/.ssh/id_ed25519"
+http_conf: "honeybee.conf"
+https_conf: "honeybeeSSL.conf"

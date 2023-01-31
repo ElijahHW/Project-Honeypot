@@ -1,0 +1,33 @@
+<IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+
+                ServerName rgp06.hp.ti.howest.be
+                ServerAdmin elias.harvik-wright@student.howest.be
+                ServerAlias www.rgp06.hp.ti.howest.be
+                
+                DocumentRoot /var/www/html/honeybee
+
+           <Directory /var/www/html/honeybee>
+
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+
+            </Directory>
+
+                SSLEngine on
+                SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+                SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+                SSLHonorCipherOrder On
+
+                SSLCertificateFile /etc/ssl/localcerts/honeybee.crt
+                SSLCertificateKeyFile /etc/ssl/localcerts/honeybee.key
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        </VirtualHost>
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet

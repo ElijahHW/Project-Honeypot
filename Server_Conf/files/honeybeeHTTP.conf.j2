@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+                ServerAdmin elias.harvik-wright@student.howest.be
+                ServerName rgp06.hp.ti.howest.be
+                ServerAlias www.rgp06.hp.ti.howest.be
+
+                DocumentRoot /var/www/html/honeybee
+
+                RewriteEngine On
+                RewriteCond %{HTTPS} !=on
+                RewriteCond %{HTTP_HOST} !^(localhost|127.0.0.1)
+                RewriteRule ^/(.*) https://rgp06.hp.ti.howest.be/$1 [R,L]
+
+            <Directory /var/www/html/honeybee>
+</VirtualHost>
+

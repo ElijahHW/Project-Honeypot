@@ -1,0 +1,25 @@
+---
+
+# Prerequisites: Debian VM with SSH access & GIT SSH keys installed
+# Run with: ansible-playbook lab_1.2_solution.yml -K -u [usernameVM]
+
+- name: Honeybee
+  hosts: rgp06.hp.ti.howest.be
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - include_tasks: tasks/install.yml
+    - include_tasks: tasks/config.yml
+  
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
